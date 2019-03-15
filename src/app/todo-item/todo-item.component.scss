@@ -8,6 +8,23 @@
 
 .example-margin {
   margin: 0 10px;
+  width: 225px;
+  overflow:hidden;
+  //white-space: nowrap;
+  //text-overflow: ellipsis;
+
+}
+
+//.mat-checkbox-label {
+//
+//}
+
+.todo-item-done {
+  //.mat-checkbox-label {
+
+  text-decoration: line-through !important;
+  color: silver;
+  //}
 }
 
 .todo-item-btn {

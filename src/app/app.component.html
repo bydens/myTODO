@@ -11,14 +11,7 @@
       </mat-card-content>
     </mat-card>
     <div id="todo-list">
-        <app-todo-item></app-todo-item>
-        <app-todo-item></app-todo-item>
-        <app-todo-item></app-todo-item>
-        <app-todo-item></app-todo-item>
-        <app-todo-item></app-todo-item>
-        <app-todo-item></app-todo-item>
-        <app-todo-item></app-todo-item>
-        <app-todo-item></app-todo-item>
+        <app-todo-item [item]="todoItem" *ngFor="let todoItem of todoItemList"></app-todo-item>
     </div>
   </div>
 </div>
