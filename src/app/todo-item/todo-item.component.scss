@@ -1,10 +1,19 @@
 .example-section {
-    display: flex;
-    align-content: center;
-    align-items: center;
-    height: 60px;
-  }
-  
-  .example-margin {
-    margin: 0 10px;
-  }
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+  justify-content: space-between;
+}
+
+.example-margin {
+  margin: 0 10px;
+}
+
+.todo-item-btn {
+  margin: 0 4px;
+}
+
+.todo-item {
+  border-bottom: solid 1px silver;
+}
