@@ -1,9 +1,14 @@
 <div class="todo-item">
   <section class="example-section">
-    <mat-checkbox [ngClass]="{'todo-item-done': item.isDone}" class="example-margin" [(ngModel)]="item.isDone">{{item.text}}</mat-checkbox>
+    <mat-checkbox [ngClass]="{'todo-item-done': item.isDone}" class="example-margin"
+                  [(ngModel)]="item.isDone">{{item.text}}</mat-checkbox>
     <div>
       <button class="todo-item-btn" mat-raised-button color="primary" [disabled]="item.isDone">Edit</button>
-      <button class="todo-item-btn" mat-raised-button color="warn" [disabled]="item.isDone">Delete</button>
+      <button
+              class="todo-item-btn"
+              mat-raised-button color="warn"
+              [disabled]="item.isDone" (click)="onDeleteItem(item.id)">Delete
+      </button>
     </div>
   </section>
 </div>
