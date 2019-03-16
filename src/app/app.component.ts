@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TodoItem} from './models/todoItem.model';
+import {ItemService} from './services/item.service';
 
 @Component({
   selector: 'app-root',
@@ -9,36 +10,12 @@ import {TodoItem} from './models/todoItem.model';
 
 
 export class AppComponent implements OnInit {
+  constructor(private itemService: ItemService) {}
+
   public todoItemList: TodoItem[] = [];
 
   ngOnInit(): void {
-    this.todoItemList = [
-      {
-        id: 1,
-        text: 'Learn CSS',
-        isDone: false
-      }, {
-        id: 2,
-        text: 'Learn JS',
-        isDone: false
-      }, {
-        id: 3,
-        text: 'Learn HTML',
-        isDone: false
-      }, {
-        id: 4,
-        text: 'If you wont to get smth - do smth',
-        isDone: true
-      }, {
-        id: 5,
-        text: 'Integrate Terminal contract from XDC to POS Application',
-        isDone: false
-      }, {
-        id: 6,
-        text: 'Drawer sessions refactoring',
-        isDone: true
-      },
-    ];
+    this.todoItemList = this.itemService.getTodoItems();
   }
 
 }

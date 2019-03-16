@@ -8,13 +8,16 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import { FormsModule } from '@angular/forms';
-import { TodoItemComponent } from './todo-item/todo-item.component';
+import {FormsModule} from '@angular/forms';
+import {TodoItemComponent} from './todo-item/todo-item.component';
+import { TodoFormComponent } from './todo-form/todo-form.component';
+// import {ItemService} from './services/item.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodoItemComponent
+    TodoItemComponent,
+    TodoFormComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +30,7 @@ import { TodoItemComponent } from './todo-item/todo-item.component';
     FormsModule
   ],
   providers: [],
+  // providers: [ItemService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,15 +1,6 @@
 <div id="todo-main">
   <div id="todo-block">
-    <mat-card>
-      <mat-card-content>
-        <form class="example-form">
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Add ticket">
-          </mat-form-field>
-          <button mat-flat-button color="primary">Add</button>
-        </form>
-      </mat-card-content>
-    </mat-card>
+    <app-todo-item-manage></app-todo-item-manage>
     <div id="todo-list">
         <app-todo-item [item]="todoItem" *ngFor="let todoItem of todoItemList"></app-todo-item>
     </div>
