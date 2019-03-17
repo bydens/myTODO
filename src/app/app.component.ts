@@ -14,7 +14,6 @@ export class AppComponent implements OnInit {
   constructor(private itemService: ItemService) {}
 
   public todoItemList: Observable<TodoItem[]> = of([]);
-  public item: any;
 
   ngOnInit(): void {
     this.todoItemList = this.itemService.getTodoItems();
