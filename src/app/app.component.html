@@ -1,6 +1,6 @@
 <div id="todo-main">
   <div id="todo-block">
-    <app-todo-item-manage></app-todo-item-manage>
+    <app-todo-item-manage (addItem)="addItem($event)"></app-todo-item-manage>
     <div id="todo-list">
       <app-todo-item
               [item]="todoItem"

@@ -1,4 +1,4 @@
-import {TodoItem} from '../models/todoItem.model';
+import {Item, TodoItem} from '../models/todoItem.model';
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 
@@ -47,16 +47,17 @@ export class ItemService {
     this.$items.next(this.items);
   }
 
-  public addItem(todoItem: TodoItem): void {
+  public addItem(text: string): void {
     // TODO use spread operator
-    this.items.push(todoItem);
+    const newItem = new Item(Date.now(), text, false);
+    this.items.push(newItem);
     this.$items.next(this.items);
   }
 
   public editItem(todoItem: TodoItem): void {
     let curItem: TodoItem = this.items.find((item: TodoItem) => item.id === todoItem.id);
     curItem = {...curItem, ...todoItem};
-    this.deleteItem(curItem.id);
-    this.addItem(curItem);
+    // this.deleteItem(curItem.id);
+    // this.addItem(curItem.text);
   }
 }

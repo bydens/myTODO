@@ -2,9 +2,9 @@
   <mat-card-content>
     <form class="todo-form">
       <mat-form-field class="todo-full-width">
-        <input matInput placeholder="Add ticket">
+        <input matInput placeholder="Add ticket" name="itemText" [(ngModel)]="itemText">
       </mat-form-field>
-      <button mat-flat-button color="primary">Add</button>
+      <button mat-flat-button color="primary" (click)="addNewItem(itemText)">Add</button>
     </form>
   </mat-card-content>
 </mat-card>

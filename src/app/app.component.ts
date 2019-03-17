@@ -11,7 +11,8 @@ import {Observable, of} from 'rxjs';
 
 
 export class AppComponent implements OnInit {
-  constructor(private itemService: ItemService) {}
+  constructor(private itemService: ItemService) {
+  }
 
   public todoItemList: Observable<TodoItem[]> = of([]);
 
@@ -21,6 +22,10 @@ export class AppComponent implements OnInit {
 
   public deleteItem(id: number) {
     this.itemService.deleteItem(id);
+  }
+
+  public addItem(itemText: string): void {
+    this.itemService.addItem(itemText);
   }
 
 }

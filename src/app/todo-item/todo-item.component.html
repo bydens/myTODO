@@ -3,7 +3,11 @@
     <mat-checkbox [ngClass]="{'todo-item-done': item.isDone}" class="example-margin"
                   [(ngModel)]="item.isDone">{{item.text}}</mat-checkbox>
     <div>
-      <button class="todo-item-btn" mat-raised-button color="primary" [disabled]="item.isDone">Edit</button>
+      <button
+              class="todo-item-btn"
+              mat-raised-button color="primary"
+              [disabled]="item.isDone">Edit
+      </button>
       <button
               class="todo-item-btn"
               mat-raised-button color="warn"

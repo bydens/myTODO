@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-todo-item-manage',
@@ -6,10 +6,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todo-form.component.scss']
 })
 export class TodoFormComponent implements OnInit {
+  @Output() addItem = new EventEmitter<string>();
 
-  constructor() { }
+  public itemText: string;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  public addNewItem(text: string): void {
+    if (!text) {
+      return;
+    }
+
+    this.addItem.emit(text);
+    this.itemText = '';
+  }
 }
