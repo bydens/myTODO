@@ -43,8 +43,8 @@ export class ItemService {
   }
 
   public deleteItem(itemId: number): void {
-    const newItems = [...this.items.filter((item: TodoItem) => item.id !== itemId)];
-    this.$items.next(newItems);
+    this.items = [...this.items.filter((item: TodoItem) => item.id !== itemId)];
+    this.$items.next(this.items);
   }
 
   public addItem(todoItem: TodoItem): void {
