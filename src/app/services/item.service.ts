@@ -48,7 +48,6 @@ export class ItemService {
   }
 
   public addItem(text: string): void {
-    // TODO use spread operator
     const newItem = new Item(Date.now(), text, false);
     this.items = [...this.items, ...[newItem]];
     this.$items.next(this.items);
