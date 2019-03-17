@@ -27,7 +27,7 @@ export class TodoFormComponent implements OnInit {
   private validWords(control: FormControl) {
     if (control.value.includes(this.listErrorWords)) {
       return {
-        'errorWords': true
+        errorWords: true
       };
     }
     return null;
