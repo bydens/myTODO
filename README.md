@@ -31,3 +31,4 @@ PWA
 NgRx
 RxJs
 Grid
+Lazy loading 

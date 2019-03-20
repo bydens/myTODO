@@ -5,18 +5,22 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {TodoItemComponent} from './todo-item/todo-item.component';
-import { TodoFormComponent } from './todo-form/todo-form.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {DialogOverviewExampleDialogComponent, TodoItemComponent} from './todo-item/todo-item.component';
+import {TodoFormComponent} from './todo-form/todo-form.component';
+import {EditModalComponent} from './share/modal/edit-modal/edit-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoItemComponent,
-    TodoFormComponent
+    TodoFormComponent,
+    EditModalComponent,
+    DialogOverviewExampleDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -27,8 +31,10 @@ import { TodoFormComponent } from './todo-form/todo-form.component';
     MatButtonModule,
     MatCheckboxModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
   ],
+  entryComponents: [EditModalComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

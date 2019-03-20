@@ -6,11 +6,11 @@
       <button
               class="todo-item-btn"
               mat-raised-button color="primary"
-              [disabled]="item.isDone">Edit
+              [disabled]="item.isDone" (click)="openEditItemModal(item)">Edit
       </button>
       <button
               class="todo-item-btn"
-              mat-raised-button color="warn"
+              mat-raised-button color="warn"s
               [disabled]="item.isDone" (click)="onDeleteItem(item.id)">Delete
       </button>
     </div>
