@@ -1,5 +1,6 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import {FormBuilder, FormControl, Validators} from '@angular/forms';
+import {TodoItem} from '../models/todoItem.model';
 
 @Component({
   selector: 'app-todo-item-manage',
@@ -11,6 +12,7 @@ export class TodoFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
   }
+  @Input() currentItem: TodoItem;
   @Output() addItem = new EventEmitter<string>();
 
   newItemForm = this.fb.group({
@@ -22,6 +24,11 @@ export class TodoFormComponent implements OnInit {
   ];
 
   ngOnInit() {
+    if (this.currentItem) {
+      this.newItemForm.patchValue({
+        itemText: this.currentItem.text
+      });
+    }
   }
 
   private validWords(control: FormControl) {

@@ -27,5 +27,4 @@ export class AppComponent implements OnInit {
   public addItem(itemText: string): void {
     this.itemService.addItem(itemText);
   }
-
 }

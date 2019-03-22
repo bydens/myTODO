@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {TodoItem} from '../models/todoItem.model';
 import {EditModalComponent} from '../share/modal/edit-modal/edit-modal.component';
 import {MatDialog} from '@angular/material';
+import {ItemService} from '../services/item.service';
 
 @Component({
   selector: 'app-todo-item',
@@ -13,7 +14,7 @@ export class TodoItemComponent implements OnInit {
   @Input() item: TodoItem;
   @Output() idItemDelete = new EventEmitter<number>();
 
-  constructor(private modal: MatDialog) { }
+  constructor(private modal: MatDialog, private itemService: ItemService) { }
 
   ngOnInit() {
   }
@@ -23,27 +24,13 @@ export class TodoItemComponent implements OnInit {
   }
 
   public openEditItemModal(item: TodoItem) {
-    const dialogRef = this.modal.open(EditModalComponent, {width: '250px', data: item});
-    // const dialogRef = this.modal.open(DialogOverviewExampleDialogComponent);
+    // const dialogRef = this.modal.open(EditModalComponent, {width: '250px', data: item});
+    const dialogRef = this.modal.open(EditModalComponent, {data: item});
+
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      item = {...item, ...{text: result}};
+      this.itemService.editItem(item);
+      console.log('The dialog was closed', result, item);
     });
   }
-}
-
-@Component({
-  // selector: 'dialog-overview-example-dialog',
-  template: `<h1 mat-dialog-title>Hi</h1>`,
-})
-export class DialogOverviewExampleDialogComponent {
-  constructor() {}
-
-  // constructor(
-  //   public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-  //   @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-  //
-  // onNoClick(): void {
-  //   this.dialogRef.close();
-  // }
-
 }

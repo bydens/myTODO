@@ -10,7 +10,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {DialogOverviewExampleDialogComponent, TodoItemComponent} from './todo-item/todo-item.component';
+import {TodoItemComponent} from './todo-item/todo-item.component';
 import {TodoFormComponent} from './todo-form/todo-form.component';
 import {EditModalComponent} from './share/modal/edit-modal/edit-modal.component';
 
@@ -19,8 +19,7 @@ import {EditModalComponent} from './share/modal/edit-modal/edit-modal.component'
     AppComponent,
     TodoItemComponent,
     TodoFormComponent,
-    EditModalComponent,
-    DialogOverviewExampleDialogComponent
+    EditModalComponent
   ],
   imports: [
     BrowserModule,

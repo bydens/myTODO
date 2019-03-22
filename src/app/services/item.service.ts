@@ -56,6 +56,9 @@ export class ItemService {
   public editItem(todoItem: TodoItem): void {
     let curItem: TodoItem = this.items.find((item: TodoItem) => item.id === todoItem.id);
     curItem = {...curItem, ...todoItem};
+    this.items = this.items.filter((i: TodoItem) => i.id !== curItem.id);
+    this.items = [...this.items, ...[curItem]];
+    this.$items.next(this.items);
     // this.deleteItem(curItem.id);
     // this.addItem(curItem.text);
   }

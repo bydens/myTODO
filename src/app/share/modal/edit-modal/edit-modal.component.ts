@@ -9,15 +9,12 @@ import {TodoItem} from '../../../models/todoItem.model';
 })
 export class EditModalComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: TodoItem) {}
-
-  // constructor() { }
-  // constructor(private modal: MatDialogRef<EditModalComponent>, @Inject(MAT_DIALOG_DATA) public data: TodoItem) { }
+  constructor(public dialogRef: MatDialogRef<EditModalComponent>, @Inject(MAT_DIALOG_DATA) public item: TodoItem) {}
 
   ngOnInit() {
   }
 
-  // public updateItem(itemText: string) {
-  //   console.log(itemText);
-  // }
+  public updateItem(itemText: string) {
+    this.dialogRef.close(itemText);
+  }
 }
