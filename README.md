@@ -32,3 +32,4 @@ NgRx
 RxJs
 Grid
 Lazy loading 
+Autorization
