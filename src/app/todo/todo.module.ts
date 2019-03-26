@@ -12,6 +12,8 @@ import {TodoFormComponent} from './todo-form/todo-form.component';
 import {EditModalComponent} from './share/modal/edit-modal/edit-modal.component';
 import {ToDoComponent} from './todo.component';
 import {ItemService} from './services/item.service';
+import {StoreModule} from '@ngrx/store';
+import {reducer} from './store/todo.reducer';
 
 
 @NgModule({
@@ -23,7 +25,8 @@ import {ItemService} from './services/item.service';
     MatCheckboxModule,
     FormsModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    StoreModule.forFeature('todoItems', reducer)
   ],
   declarations: [
     ToDoComponent,
