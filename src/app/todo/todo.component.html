@@ -5,7 +5,7 @@
       <app-todo-item
         [item]="todoItem"
         (idItemDelete)="deleteItem($event)"
-        *ngFor="let todoItem of todoItemList | async">
+        *ngFor="let todoItem of todoItemList">
       </app-todo-item>
     </div>
   </div>

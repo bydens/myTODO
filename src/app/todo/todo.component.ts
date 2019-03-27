@@ -2,7 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {TodoItem} from './models/todoItem.model';
 import {ItemService} from './services/item.service';
 import {Observable, of} from 'rxjs';
-import {Store} from '@ngrx/store';
+import {Store, select} from '@ngrx/store';
+import { State } from '../state/app.state';
+import { getTodoItems } from './store/todo.reducer';
 
 @Component({
   selector: 'app-todo',
@@ -12,20 +14,24 @@ import {Store} from '@ngrx/store';
 
 
 export class ToDoComponent implements OnInit {
-  constructor(private itemService: ItemService, private store: Store<any>) {
+  constructor(private itemService: ItemService, private store: Store<State>) {
   }
 
-  public todoItemList: Observable<TodoItem[]> = of([]);
+  public todoItemList:TodoItem[];
+  // public todoItemList: Observable<TodoItem[]> = of([]);
 
   ngOnInit(): void {
-    this.todoItemList = this.itemService.getTodoItems();
+    // this.todoItemList = this.itemService.getTodoItems();
+    this.store.pipe(select(getTodoItems)).subscribe(
+      (todoItemList: TodoItem[]) => this.todoItemList = todoItemList
+    );
   }
 
-  public deleteItem(id: number) {
-    this.itemService.deleteItem(id);
+  public deleteItem(item: TodoItem) {
+    this.itemService.deleteItem(item.id);
     this.store.dispatch({
       type: 'DELETE_ITEM',
-      payload: id
+      payload: item
     });
   }
 

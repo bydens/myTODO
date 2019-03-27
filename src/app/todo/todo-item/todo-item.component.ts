@@ -12,15 +12,15 @@ import {ItemService} from '../services/item.service';
 export class TodoItemComponent implements OnInit {
 
   @Input() item: TodoItem;
-  @Output() idItemDelete = new EventEmitter<number>();
+  @Output() idItemDelete = new EventEmitter<TodoItem>();
 
   constructor(private modal: MatDialog, private itemService: ItemService) { }
 
   ngOnInit() {
   }
 
-  public onDeleteItem(itemId: number): void {
-    this.idItemDelete.emit(itemId);
+  public onDeleteItem(item: TodoItem): void {
+    this.idItemDelete.emit(item);
   }
 
   public openEditItemModal(item: TodoItem) {
