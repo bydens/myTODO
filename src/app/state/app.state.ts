@@ -1,4 +1,4 @@
-import { TodoState } from '../todo/store/todo.reducer';
+import { TodoState } from '../todo/state/todo.reducer';
 
 export interface State {
     todoItems: TodoState;

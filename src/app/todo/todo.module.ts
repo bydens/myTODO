@@ -13,7 +13,7 @@ import {EditModalComponent} from './share/modal/edit-modal/edit-modal.component'
 import {ToDoComponent} from './todo.component';
 import {ItemService} from './services/item.service';
 import {StoreModule} from '@ngrx/store';
-import {reducer} from './store/todo.reducer';
+import {reducer} from './state/todo.reducer';
 
 
 @NgModule({

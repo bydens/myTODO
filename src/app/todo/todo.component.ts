@@ -4,7 +4,7 @@ import {ItemService} from './services/item.service';
 import {Observable, of} from 'rxjs';
 import {Store, select} from '@ngrx/store';
 import { State } from '../state/app.state';
-import { getTodoItems } from './store/todo.reducer';
+import { getTodoItems } from './state/todo.reducer';
 
 @Component({
   selector: 'app-todo',
