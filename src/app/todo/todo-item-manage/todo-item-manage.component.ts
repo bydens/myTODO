@@ -4,18 +4,20 @@ import {TodoItem} from '../models/todoItem.model';
 
 @Component({
   selector: 'app-todo-item-manage',
-  templateUrl: './todo-form.component.html',
-  styleUrls: ['./todo-form.component.scss']
+  templateUrl: './todo-item-manage.component.html',
+  styleUrls: ['./todo-item-manage.component.scss']
 })
 
-export class TodoFormComponent implements OnInit {
+export class TodoItemManageComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
   }
   @Input() currentItem: TodoItem;
-  @Output() addItem = new EventEmitter<string>();
+  @Output() addEditItem = new EventEmitter<string>();
 
-  newItemForm = this.fb.group({
+  public btnTitle: string = 'Add';
+
+  public manageItemForm = this.fb.group({
     itemText: ['', [Validators.required, this.validWords.bind(this)]]
   });
 
@@ -25,9 +27,11 @@ export class TodoFormComponent implements OnInit {
 
   ngOnInit() {
     if (this.currentItem) {
-      this.newItemForm.patchValue({
+      this.manageItemForm.patchValue({
         itemText: this.currentItem.text
       });
+
+      this.btnTitle = 'Edit';
     }
   }
 
@@ -40,15 +44,16 @@ export class TodoFormComponent implements OnInit {
     return null;
   }
 
-  public addNewItem(): void {
-    const formValue = this.newItemForm.value;
+  public manageItem(): void {
+    const formValue = this.manageItemForm.value;
+
     if (!formValue.itemText) {
       return;
     }
 
-    this.addItem.emit(formValue.itemText);
+    this.addEditItem.emit(formValue.itemText);
 
-    this.newItemForm.patchValue({
+    this.manageItemForm.patchValue({
       itemText: ''
     });
 

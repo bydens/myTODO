@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {TodoItem} from '../models/todoItem.model';
+import {TodoItem, PayloadItem} from '../models/todoItem.model';
 import {EditModalComponent} from '../share/modal/edit-modal/edit-modal.component';
 import {MatDialog} from '@angular/material';
 import {ItemService} from '../services/item.service';
@@ -12,7 +12,7 @@ import {ItemService} from '../services/item.service';
 export class TodoItemComponent implements OnInit {
 
   @Input() item: TodoItem;
-  @Output() idItemDelete = new EventEmitter<TodoItem>();
+  @Output() itemUpdate = new EventEmitter<PayloadItem>();
 
   constructor(private modal: MatDialog, private itemService: ItemService) { }
 
@@ -20,7 +20,12 @@ export class TodoItemComponent implements OnInit {
   }
 
   public onDeleteItem(item: TodoItem): void {
-    this.idItemDelete.emit(item);
+    const payload: PayloadItem = {
+      type: 'delete',
+      item
+    }
+
+    this.itemUpdate.emit(payload);
   }
 
   public openEditItemModal(item: TodoItem) {
@@ -29,8 +34,15 @@ export class TodoItemComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       item = {...item, ...{text: result}};
-      this.itemService.editItem(item);
-      console.log('The dialog was closed', result, item);
+
+      const payload: PayloadItem = {
+        type: 'edit',
+        item
+      }
+      
+      this.itemUpdate.emit(payload);
+      // this.itemService.editItem(item);
+      // console.log('The dialog was closed', result, item);
     });
   }
 }

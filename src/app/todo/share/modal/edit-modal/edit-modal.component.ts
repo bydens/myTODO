@@ -14,7 +14,7 @@ export class EditModalComponent implements OnInit {
   ngOnInit() {
   }
 
-  public updateItem(itemText: string) {
+  public editItem(itemText: string) {
     this.dialogRef.close(itemText);
   }
 }

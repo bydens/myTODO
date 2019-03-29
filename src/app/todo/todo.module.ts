@@ -8,7 +8,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {TodoItemComponent} from './todo-item/todo-item.component';
-import {TodoFormComponent} from './todo-form/todo-form.component';
+import {TodoItemManageComponent} from './todo-item-manage/todo-item-manage.component';
 import {EditModalComponent} from './share/modal/edit-modal/edit-modal.component';
 import {ToDoComponent} from './todo.component';
 import {ItemService} from './services/item.service';
@@ -31,7 +31,7 @@ import {reducer} from './state/todo.reducer';
   declarations: [
     ToDoComponent,
     TodoItemComponent,
-    TodoFormComponent,
+    TodoItemManageComponent,
     EditModalComponent
   ],
   entryComponents: [EditModalComponent],

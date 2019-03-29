@@ -11,3 +11,8 @@ export interface TodoItem {
   text: string;
   isDone: boolean;
 }
+
+export interface PayloadItem {
+  type: string;
+  item: TodoItem;
+}

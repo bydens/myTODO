@@ -1,12 +1,12 @@
 <mat-card>
   <mat-card-content>
-    <form [formGroup]="newItemForm" class="todo-form">
+    <form [formGroup]="manageItemForm" class="todo-form">
       <mat-form-field class="todo-full-width">
         <input matInput placeholder="Add ticket" formControlName="itemText">
       </mat-form-field>
       <button mat-flat-button color="primary"
-              (click)="addNewItem()"
-              [disabled]="!newItemForm.valid">Add
+              (click)="manageItem()"
+              [disabled]="!manageItemForm.valid">{{btnTitle}}
       </button>
     </form>
   </mat-card-content>

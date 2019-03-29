@@ -1,10 +1,10 @@
 <div id="todo-main">
   <div id="todo-block">
-    <app-todo-item-manage (addItem)="addItem($event)"></app-todo-item-manage>
+    <app-todo-item-manage (addEditItem)="addItem($event)"></app-todo-item-manage>
     <div id="todo-list">
       <app-todo-item
         [item]="todoItem"
-        (idItemDelete)="deleteItem($event)"
+        (itemUpdate)="updateItem($event)"
         *ngFor="let todoItem of todoItemList">
       </app-todo-item>
     </div>

@@ -1,5 +1,7 @@
 import {Item, TodoItem} from '../models/todoItem.model';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { TodoActions, TodoActionTypes } from './todo.actions';
+import { text } from '@angular/core/src/render3';
 
 export interface TodoState {
   currentItem?: TodoItem;
@@ -45,14 +47,19 @@ export const getTodoItems = createSelector(
   state => state.items
 );
 
-export function reducer(state = initialtState, action): TodoState {
+export function reducer(state = initialtState, action: TodoActions): TodoState {
   switch (action.type) {
-    case 'ADD_ITEM':
+    case TodoActionTypes.AddItem:
+    // TODO move to component or service
       const newItem = new Item(Date.now(), action.payload, false);
       return {...state, items: [...state.items, ...[newItem]]};
-    case 'DELETE_ITEM':
+    case TodoActionTypes.DeleteItem:
       const newItmeList: TodoItem[] = state.items.filter((item: TodoItem) => item.id !== action.payload.id);
       return {...state, items: newItmeList};
+    case TodoActionTypes.EditItem:
+      const editItmeList: TodoItem[] = state.items.filter((item: TodoItem) => item.id !== action.payload.id);
+      editItmeList.push(action.payload);
+      return {...state, items: editItmeList};
     default:
       return state;
   }
